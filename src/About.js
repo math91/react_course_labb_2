@@ -4,7 +4,7 @@ import Username from "./Username"
 function About() {
   const user = React.useContext(Username)
   return (
-    <h1>Hello {user}</h1>
+    <h1>Hello {user} eller?</h1>
   )
 }
 
