@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import styled from "styled-components"
+import {TeamContext} from "./App"
 
 const Button = styled.button`
   display: inline-block;
@@ -31,8 +32,8 @@ const Lian = styled.li`
 function PickPlayers() {
 
   const [dog, setDog] = useState("nodog.jpg")
-  const [team, setTeam] = useState([])
   const [number, setNumber] = useState(0)
+  const [team] = useContext(TeamContext)
 
   // On click Randomize dog
   function randomClick() {
