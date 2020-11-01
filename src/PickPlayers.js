@@ -1,6 +1,7 @@
-import React, {useState, useEffect, useContext} from "react"
+import React, {useState, useEffect, createContext} from "react"
+import Team from "./Team"
 import styled from "styled-components"
-import {TeamContext} from "./App"
+export const TeamContext = createContext(null)
 
 const Button = styled.button`
   display: inline-block;
@@ -17,23 +18,11 @@ const Button = styled.button`
   }
 `;
 
-const Ul = styled.ul`
-  list-style: none;
-  padding-left: 0;
-`
-
-const Lian = styled.li`
-  float: left;
-  width: 100%;
-  max-width: 250px;
-  margin: 10px;
-`
-
 function PickPlayers() {
 
   const [dog, setDog] = useState("nodog.jpg")
   const [number, setNumber] = useState(0)
-  const [team] = useContext(TeamContext)
+  const [team, setTeam] = useState(["notinh"])
 
   // On click Randomize dog
   function randomClick() {
@@ -42,6 +31,7 @@ function PickPlayers() {
     .then(data => {
       setDog(data.message)
     })
+    console.log(team)
   }
 
   // Load Dog on start
@@ -55,12 +45,6 @@ function PickPlayers() {
     setNumber(prevNum => prevNum + 1)
     randomClick()
   }
-
-  // List Dog Team
-  const dogTeam = team.map((item) =>
-    <Lian key={item}>
-      <img src={item} height="150px"/>
-    </Lian>)
 
   return (
     <>
@@ -82,11 +66,12 @@ function PickPlayers() {
       >
         Add Dog to Team
       </Button>
-      <br />
-      <Ul>
-        {dogTeam}
-      </Ul>
-    </>
+
+    <TeamContext.Provider value={team}>
+      <Team />
+    </TeamContext.Provider>
+
+  </>
   )
 }
 
