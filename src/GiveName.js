@@ -1,11 +1,10 @@
 import React, {useState} from "react"
 
 function GiveName() {
-  const [name, setName] = useState("")
+  const [name, setName] = useState("") //Need to move this to my context
 
   function handleChange(event) {
     setName(event.target.value)
-    console.log(name)
   }
 
   return (
@@ -17,6 +16,7 @@ function GiveName() {
         value={name}
         onChange={handleChange}
       />
+      <p>Your team name is: {name}</p>
     </>
   )
 }

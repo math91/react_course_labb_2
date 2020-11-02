@@ -1,5 +1,5 @@
 import React, {useContext} from "react"
-import {TeamContext} from "./PickPlayers"
+import {TeamContext} from "./teamContext"
 import styled from "styled-components"
 
 const Ul = styled.ul`
@@ -15,7 +15,7 @@ const Li = styled.li`
 `
 
 function Lineup() {
-  const team = useContext(TeamContext)
+  const {team, setTeam} = useContext(TeamContext)
 
   // List Dog Team
   const dogTeam = team.map((item) =>

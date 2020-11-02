@@ -11,7 +11,7 @@ function Main() {
         <PickPlayers />
       </Route>
       <Route path="/team">
-        {/* <Team /> */}
+        <Team />
       </Route>
       <Route path="/play">
         <Play />
