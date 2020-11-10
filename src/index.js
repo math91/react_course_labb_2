@@ -6,8 +6,8 @@ import {TeamProvider} from "./teamContext"
 
 ReactDOM.render(
   <BrowserRouter>
-      <TeamProvider>
-        <App />
+    <TeamProvider>
+      <App />
     </TeamProvider>
   </BrowserRouter>,
   document.getElementById('root'))

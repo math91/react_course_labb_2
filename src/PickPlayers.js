@@ -9,7 +9,7 @@ const Button = styled.button`
   padding: 0.25em 1em;
   color: palevioletred;
   border: 2px solid palevioletred;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
 
   &:hover {
@@ -19,8 +19,8 @@ const Button = styled.button`
 `;
 
 function PickPlayers() {
-  const [dog, setDog] = useState("nodog.jpg")
-  const {team, setTeam} = useTeam()
+  const [dog, setDog] = useState("")
+  const {team, dispatch} = useTeam()
   const number = team.length
 
   // On click Randomize dog
@@ -32,16 +32,15 @@ function PickPlayers() {
     })
   }
 
+  function addClick() {
+    dispatch({type: "add", dog})
+    randomClick()
+  }
+
   // Load Dog on start
   useEffect(() => {
     randomClick()
   }, [])
-
-  // On click Add Dog
-  function addClick() {
-    setTeam(team.concat(dog))
-    randomClick()
-  }
 
   return (
     <>
@@ -63,7 +62,11 @@ function PickPlayers() {
       >
         Add Dog to Team
       </Button>
-
+      <Button
+        onClick={() => dispatch({type: "remove"})}
+      >
+        Remove all dogs
+      </Button>
   </>
   )
 }

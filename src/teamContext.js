@@ -1,14 +1,22 @@
-import React, {useState, useContext} from "react"
+import React, {useReducer, useContext} from "react"
+import dogReducer from "./dogReducer"
 
 const TeamContext = React.createContext(null)
 
 export function TeamProvider(props) {
-  const [team, setTeam] = useState([])
-
-  return <TeamContext.Provider value={{team, setTeam}}>{props.children}</TeamContext.Provider>
+  const [team, dispatch] = useReducer(dogReducer, [])
+  const contextValue = {
+    team,
+    dispatch,
+  }
+  console.log(team)
+  return <TeamContext.Provider value={contextValue}>{props.children}</TeamContext.Provider>
 }
 
 export function useTeam() {
   const context = useContext(TeamContext)
+  if (!context) {
+    throw new Error("useTeam must be used in a cartprovider. Wrap av paret compnent i cartprvider to fix this error.")
+  }
   return context
 }

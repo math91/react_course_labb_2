@@ -13,20 +13,29 @@ function reducer(state, action) {
 
 function Play() {
   const [state, dispatch] = useReducer(reducer, { count: 0 })
+  const [loading, setLoading] = useState(false)
 
   function handleClick() {
-    const you = state.count + 2
-    const opponent = state.count
-    document.getElementById('playGame').innerHTML =
-    "Congratz! You won " + you + " - " + opponent + " against Cats Bollklubb."
-  }
+    setLoading(true)
+    setTimeout(function(){
+      setLoading(false)
+      const you = state.count + 2
+      const opponent = state.count
+      document.getElementById('playGame').innerHTML =
+      "Congratz! You won " + you + " - " + opponent + " against Cats Bollklubb."
+  }, 3000);
+}
 
   function increment() {
     dispatch({type: "increment"})
   }
 
   function decrement() {
-    dispatch({type: "decrement"})
+    if (state.count < 1) {
+      alert("Must be at least 0")
+    } else {
+      dispatch({type: "decrement"})
+    }
   }
 
   return (
@@ -39,6 +48,7 @@ function Play() {
         <button onClick={increment}>+</button>
         <br /><br />
         <button onClick={handleClick}>Play Game!</button>
+        <p>{loading ? "Playing game..." : "Waiting for game to start..."}</p>
       </div>
     </>
   )

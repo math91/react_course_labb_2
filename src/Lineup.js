@@ -14,13 +14,18 @@ const Li = styled.li`
   margin: 10px;
 `
 
+const Button = styled.button`
+  background-color: lightblue;
+`
+
 function Lineup() {
-  const {team, setTeam} = useTeam()
+  const {team} = useTeam()
 
   // List Dog Team
   const dogTeam = team.map((item) =>
     <Li key={item}>
       <img src={item} height="150px"/>
+      <Button>Give extra speed</Button>
     </Li>)
 
   return(
