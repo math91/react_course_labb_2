@@ -9,7 +9,6 @@ export function TeamProvider(props) {
     team,
     dispatch,
   }
-  console.log(team)
   return <TeamContext.Provider value={contextValue}>{props.children}</TeamContext.Provider>
 }
 

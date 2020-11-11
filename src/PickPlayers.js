@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react"
-import Team from "./Team"
 import {useTeam} from "./teamContext"
 import styled from "styled-components"
 
@@ -9,7 +8,7 @@ const Button = styled.button`
   padding: 0.25em 1em;
   color: palevioletred;
   border: 2px solid palevioletred;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 
   &:hover {
