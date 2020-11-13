@@ -1,4 +1,4 @@
-import React, {useCallback} from "react"
+import React from "react"
 import {useTeam} from "./teamContext"
 import styled from "styled-components"
 
@@ -40,7 +40,7 @@ function Lineup() {
   // List Dog Team
   const dogTeam = team.map((item) =>
     <Li key={item.img}>
-      <img src={item.img} height="150px"/>
+      <img src={item.img} alt="A dog" height="150px"/>
       <p>
         {item.speed ?
           <ButtonRed onClick={() => removeSpeed(item.img)}>Remove extra speed</ButtonRed>

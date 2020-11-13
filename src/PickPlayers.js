@@ -53,6 +53,7 @@ function PickPlayers() {
       <p>
         <img
           src={dog}
+          alt="A dog"
           height="200px"
         />
       </p>
